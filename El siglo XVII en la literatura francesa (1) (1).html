@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El siglo XVII en la literatura francesa</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e7;--fg:#231d17;--mut:#6d6254;--line:#cdbfa6;--a1:#8a5a1c;--a2:#9b2f3a;--a3:#2f5d7a;--a4:#4f6b3a;--acc:var(--a1);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14110f;--fg:#f2ebe0;--mut:#a89c8a;--line:#3b332b;--a1:#d4a95a;--a2:#e0707c;--a3:#6fb0d8;--a4:#8fbf72}}
+:root[data-theme="dark"]{--bg:#14110f;--fg:#f2ebe0;--mut:#a89c8a;--line:#3b332b;--a1:#d4a95a;--a2:#e0707c;--a3:#6fb0d8;--a4:#8fbf72}
+[data-era="1"]{--acc:var(--a1)}[data-era="2"]{--acc:var(--a2)}[data-era="3"]{--acc:var(--a3)}[data-era="4"]{--acc:var(--a4)}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--fg);font:400 1rem/1.55 Inter,system-ui,sans-serif;overflow:hidden}
+.stage{position:relative;height:100%;overflow:hidden}
+.lab{position:absolute;top:16px;left:clamp(16px,4vw,48px);z-index:2;font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acc);font-weight:500;transition:color .8s}
+.track{position:absolute;top:56px;bottom:92px;left:0;display:flex;width:max-content;transition:transform 1.3s cubic-bezier(.65,0,.25,1);will-change:transform}
+.ln{position:absolute;left:-50vw;right:-50vw;top:50%;height:2px;margin-top:-1px;background:var(--line)}
+.fill{position:absolute;left:0;top:50%;height:2px;margin-top:-1px;width:0;background:var(--acc);transition:width 1.3s cubic-bezier(.65,0,.25,1),background .8s}
+.track>article{flex:none;width:clamp(240px,30vw,380px);box-sizing:border-box;position:relative;display:grid;grid-template-rows:1fr 1fr;padding:0 18px;text-align:center;opacity:.28;transform:scale(.92);transition:opacity .9s ease,transform .9s cubic-bezier(.22,.61,.36,1);cursor:pointer}
+.track>article.era{width:clamp(280px,38vw,460px)}
+.track>article.active{opacity:1;transform:none;cursor:auto}
+.track>article::before{content:"";position:absolute;top:50%;left:50%;width:14px;height:14px;margin:-7px 0 0 -7px;box-sizing:border-box;border-radius:50%;background:var(--bg);border:3px solid var(--acc);transition:background .6s}
+.track>article.active::before{background:var(--acc);box-shadow:0 0 0 5px var(--bg),0 0 0 7px var(--acc)}
+.track>article.era::before{width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:3px;transform:rotate(45deg)}
+.yr{align-self:end;padding-bottom:30px;font:700 clamp(1.8rem,4vw,2.8rem)/1 "Cormorant Garamond",Georgia,serif;color:var(--acc)}
+.bd{padding-top:30px;min-height:0;overflow-y:auto}
+.bd h2,.bd h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:700;line-height:1.1;margin:0}
+.bd h3{font-size:1.45rem}
+.bd h2{font-size:clamp(1.9rem,4vw,2.8rem)}
+.intro .bd h2{font-size:clamp(2rem,4.6vw,3.3rem)}
+.intro .yr{font:500 .8rem Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase}
+.bd p{margin:.5rem auto 0;max-width:34ch;font-size:.95rem;color:var(--mut)}
+.ctl{position:fixed;left:0;right:0;bottom:0;padding:0 16px calc(10px + env(safe-area-inset-bottom,0px));background:linear-gradient(transparent,var(--bg) 45%)}
+.bar{height:2px;background:var(--line);margin-bottom:10px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);transition:width 1.3s cubic-bezier(.65,0,.25,1),background .8s}
+.row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px}
+button{font:inherit;font-size:.88rem;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer}
+button:hover{border-color:var(--acc);color:var(--acc)}
+#ct{min-width:64px;text-align:center;color:var(--mut);font-size:.9rem}
+body.editing :is(.yr,.bd>*){outline:1px dashed var(--line);outline-offset:3px;cursor:text}
+body.editing :is(.yr,.bd>*):focus{outline:2px solid var(--acc)}
+@media (prefers-reduced-motion:reduce){*{transition-duration:.01s!important}}
+</style>
+</head>
+<body>
+<main class="stage" id="st" data-era="1">
+<div class="lab" id="lb">Siglo XVII · Literatura francesa</div>
+<div class="track" id="tk">
+<div class="ln"></div><div class="fill" id="fl"></div>
+
+<!-- Cada <article> es una parada de la línea. class="ev" = fecha, class="era" = periodo -->
+<article class="ev intro"><div class="yr">Línea de tiempo</div><div class="bd"><h2>El siglo XVII en la literatura francesa</h2><p>Barroco · Siglo de Oro · Clasicismo. Avanza con → o desliza.</p></div></article>
+
+<article class="era"><div class="yr">AÑO – AÑO</div><div class="bd"><h2>Barroco</h2><p>Descripción breve del periodo.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+
+<article class="era"><div class="yr">AÑO – AÑO</div><div class="bd"><h2>Siglo de Oro</h2><p>Descripción breve del periodo.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+
+<article class="era"><div class="yr">AÑO – AÑO</div><div class="bd"><h2>Clasicismo</h2><p>Descripción breve del periodo.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+<article class="ev"><div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div></article>
+</div>
+</main>
+
+<nav class="ctl">
+  <div class="bar"><i id="pg"></i></div>
+  <div class="row">
+    <button id="pv" aria-label="Anterior">←</button>
+    <span id="ct"></span>
+    <button id="nx" aria-label="Siguiente">→</button>
+    <button id="ed">Editar</button>
+    <span class="row" id="ex" hidden>
+      <button id="ad">+ Fecha</button><button id="ap">+ Periodo</button><button id="dl">Eliminar</button><button id="rs">Restablecer</button>
+    </span>
+  </div>
+</nav>
+
+<script>
+const $=id=>document.getElementById(id),st=$('st'),tk=$('tk'),fl=$('fl'),K='fr17-linea';
+const TPL={ev:'<div class="yr">AÑO</div><div class="bd"><h3>Título del acontecimiento u obra</h3><p>Autor o autora. Escribe aquí una descripción breve.</p></div>',era:'<div class="yr">AÑO – AÑO</div><div class="bd"><h2>Nuevo periodo</h2><p>Descripción breve del periodo.</p></div>'};
+let items=[],c=0,ed=false;
+function mk(cl,h){const a=document.createElement('article');a.className=cl;a.innerHTML=h;return a}
+try{const d=JSON.parse(localStorage.getItem(K)||'null');if(d&&d.length){tk.querySelectorAll('article').forEach(a=>a.remove());d.forEach(([cl,h])=>tk.append(mk(cl,h)))}}catch(e){}
+function refresh(){
+  items=[...tk.querySelectorAll('article')];let n=0;
+  items.forEach(a=>{if(a.classList.contains('era'))n++;a.dataset.era=(Math.max(n,1)-1)%4+1});
+}
+function go(i){
+  c=Math.max(0,Math.min(items.length-1,i));
+  items.forEach((a,k)=>a.classList.toggle('active',k===c));
+  const a=items[c],mid=a.offsetLeft+a.offsetWidth/2;
+  tk.style.transform='translateX('+(st.clientWidth/2-mid)+'px)';
+  fl.style.width=mid+'px';st.dataset.era=a.dataset.era;
+  let l='Literatura francesa';
+  for(let k=c;k>=0;k--)if(items[k].classList.contains('era')){const h=items[k].querySelector('h2');if(h)l=h.textContent;break}
+  $('lb').textContent='Siglo XVII · '+l;
+  $('ct').textContent=(c+1)+' / '+items.length;
+  $('pg').style.width=((c+1)/items.length*100)+'%';
+}
+function save(){try{localStorage.setItem(K,JSON.stringify(items.map(a=>[a.className.replace(/\bactive\b/,'').trim(),a.innerHTML.replace(/ contenteditable="(true|false)"/g,'')])))}catch(e){}}
+function applyEdit(){tk.querySelectorAll('.yr,.bd>*').forEach(e=>e.contentEditable=ed)}
+function add(cl){items[c].after(mk(cl,TPL[cl]));refresh();applyEdit();go(c+1);save()}
+function setEdit(on){ed=on;document.body.classList.toggle('editing',on);applyEdit();$('ed').textContent=on?'Listo':'Editar';$('ex').hidden=!on;if(!on)save()}
+$('pv').onclick=()=>go(c-1);$('nx').onclick=()=>go(c+1);
+$('ed').onclick=()=>setEdit(!ed);
+$('ad').onclick=()=>add('ev');$('ap').onclick=()=>add('era');
+$('dl').onclick=()=>{if(items.length<2)return;items[c].remove();refresh();go(Math.min(c,items.length-1));save()};
+$('rs').onclick=()=>{try{localStorage.removeItem(K)}catch(e){}location.reload()};
+tk.addEventListener('click',e=>{const a=e.target.closest('article');if(a){const i=items.indexOf(a);if(i!==c)go(i)}});
+tk.addEventListener('input',save);
+document.addEventListener('keydown',e=>{
+  if(ed)return;
+  if(['ArrowRight','ArrowDown','PageDown',' '].includes(e.key)){e.preventDefault();go(c+1)}
+  else if(['ArrowLeft','ArrowUp','PageUp'].includes(e.key)){e.preventDefault();go(c-1)}
+  else if(e.key==='Home')go(0);else if(e.key==='End')go(items.length-1);
+});
+let wt=0,x0=null;
+document.addEventListener('wheel',e=>{
+  if(ed||Date.now()-wt<700)return;
+  const d=Math.abs(e.deltaX)>Math.abs(e.deltaY)?e.deltaX:e.deltaY;
+  if(Math.abs(d)<8)return;wt=Date.now();go(c+(d>0?1:-1));
+},{passive:true});
+document.addEventListener('touchstart',e=>{x0=e.touches[0].clientX},{passive:true});
+document.addEventListener('touchend',e=>{if(x0===null||ed)return;const d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>60)go(c+(d<0?1:-1));x0=null});
+window.addEventListener('resize',()=>go(c));
+if(document.fonts)document.fonts.ready.then(()=>go(c));
+refresh();go(0);
+</script>
+</body>
+</html>
